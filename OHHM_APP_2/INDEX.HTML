@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHHM App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <!-- LOGO DE LA WEB -->
+    <header style="text-align:center; padding: 20px;">
+        <img src="ohhm_icon_192.png" alt="Logo OHHM" style="width:150px; border-radius:15px;">
+    </header>
+
+    <!-- HEADER OHM -->
+    <header class="header">
+        <div class="ohm-logo">
+            <span class="ohm-main">OHM</span>
+            <span class="ohm-sub">Seguridad Primero</span>
+        </div>
+
+        <div class="author">
+            Creado por Ing. <strong>Oscar Herrera Muro</strong>
+        </div>
+    </header>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <h1 class="title">OHHM — COACH PRO</h1>
+    <p class="subtitle">Análisis de técnica en vivo · Auto-detección · Registro profesional</p>
+
+    <!-- SECCIÓN CÁMARA -->
+    <section class="camera-section">
+        <h2>📷 Cámara & Análisis</h2>
+        <div class="camera-box">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="overlay"></canvas>
+        </div>
+
+        <div class="camera-buttons">
+            <button id="startCam">Iniciar Cámara</button>
+            <button id="stopCam">Detener</button>
+            <button id="manualCapture">Captura Manual</button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN REGISTRO -->
+    <section class="records-section">
+        <h2>📑 Ficha Técnica / Historial</h2>
+        <div class="controls">
+            <input type="text" id="inputName" placeholder="Nombre del atleta">
+            <button id="saveName">Guardar Nombre</button>
+            <button id="printRecords">Imprimir</button>
+            <button id="shareWhatsapp">Enviar WhatsApp</button>
+            <button id="clearRecords">Limpiar</button>
+        </div>
+        <table id="recordsTable">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Atleta</th>
+                    <th>Vel (m/s)</th>
+                    <th>Ángulo</th>
+                    <th>Pierna</th>
+                    <th>Cadencia</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!-- APP JS -->
+    <script src="app.js"></script>
+
+    <!-- REGISTRO DEL SERVICE WORKER (PWA) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log("Service Worker registrado"))
+                .catch(err => console.log("Error SW:", err));
+        }
+    </script>
+
+</body>
+</html>
